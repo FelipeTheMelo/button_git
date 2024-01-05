@@ -1,42 +1,36 @@
-const form = document.getElementById('form-btn');
-const campoA = document.getElementById('campoA')
-let formEValido = false;
-function validaNome(campoA){
-    const nomeComoArray = campoA.split(' ');
-    return nomeComoArray.length >= 2;
+const form   = document.getElementById('form');
+const campoA = document.getElementById('campoA');
+const campoB = document.getElementById('campoB');
+const acerto = document.getElementById('valido');
+const erro   = document.getElementById('invalido');
+
+function validaValor(campoA, campoB){
+    return campoB > campoA
 }
 
-form.addEventListener('submit', function(e) {
-    
+form.addEventListener('submit', function(e){
     e.preventDefault();
-    
-    const campoB = document.getElementById('campoB')
-    const mensagemSucesso = `O valor de: <b> ${campoA.value} </b> é válido`
 
-    formEValido = validaNome(campoA.value)
-    if (formEValido) {
-        const contairnerMenssagemSucesso = document.querySelector('success-message');
-        contairnerMenssagemSucesso.innerHTML = mensagemSucesso;
-        contairnerMenssagemSucesso.style.display = 'block';
 
-        campoA.value = '';
-        campoB.value = '';
-    } else {
-        campoA.style.border = '1px solid red';
-        document.querySelector('error-message').style.display = 'block';
-    }
+let validaForm = CalculaNumber(campoA.valueAsNumber, campoB.valueAsNumber)
+if (validaForm){
+    acerto.style.display = 'block';
+    campoA.value='';
+    campoB.value='';
+} else{
+    alert('O valor é inválido!')
+}
 
 })
 
-campoA.addEventListener('keyup', function(e) {
-    console.log(e.target.value);
-    formEValido = validaNome(e.target.value);
-
-    if (!formEValido) {
-        campoA.classList.add('error');
-        document.querySelector('error-message').style.display = 'block';
-    } else {
-        campoA.classList.remove('error');
-        document.querySelector('error-message').style.display = 'none';
+campoA.addEventListener('keyup', function(e){
+    let validaForm = CalculaNumber(campoA.valueAsNumber, campoB.valueAsNumber)
+    if(!validaForm){
+        erro.style.display = 'block';
+        acerto.style.display = 'none';
+    } else{
+        erro.style.display = 'none';
     }
-});
+
+
+})

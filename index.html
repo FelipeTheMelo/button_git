@@ -7,17 +7,16 @@
     <link rel="stylesheet" href="./main.css" />
 </head>
 <body>
-    <div class="container">
+    <form id="form">
         <h1>Button</h1>
-        <form id="form-btn">
+        <form>
             <input type="number" id="campoA" required aria-placeholder="Campo A" />
-            <P class="error-message">
-                O número tem que ser maior
-            </P>
             <input type="number" id="campoB" required aria-placeholder="Campo B" />
             <button id="btn-submeter" type="submit">Submeter</button>
         </form>
-    </div>
+
+        <span id="valido"></span>
+    </form>
     <script src="./main.js"></script>
 </body>
 </html>
