@@ -1,36 +1,26 @@
-const form   = document.getElementById('form');
+const form = document.getElementById('form');
 const campoA = document.getElementById('campoA');
 const campoB = document.getElementById('campoB');
 const acerto = document.getElementById('valido');
-const erro   = document.getElementById('invalido');
+const erro = document.getElementById('erro');
 
-function validaValor(campoA, campoB){
-    return campoB > campoA
+function validaValor(campoA, campoB) {
+    return campoB > campoA;
 }
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-
-let validaForm = CalculaNumber(campoA.valueAsNumber, campoB.valueAsNumber)
-if (validaForm){
-    acerto.style.display = 'block';
-    campoA.value='';
-    campoB.value='';
-} else{
-    alert('O valor é inválido!')
-}
-
-})
-
-campoA.addEventListener('keyup', function(e){
-    let validaForm = CalculaNumber(campoA.valueAsNumber, campoB.valueAsNumber)
-    if(!validaForm){
-        erro.style.display = 'block';
-        acerto.style.display = 'none';
-    } else{
+    let isValid = validaValor(campoA.valueAsNumber, campoB.valueAsNumber);
+    if (isValid) {
+        acerto.textContent = 'Valores válidos!';
+        acerto.style.display = 'block';
         erro.style.display = 'none';
+        campoA.value = '';
+        campoB.value = '';
+    } else {
+        acerto.style.display = 'none';
+        erro.textContent = 'O valor é inválido!';
+        erro.style.display = 'block';
     }
-
-
-})
+});
