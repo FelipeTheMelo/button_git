@@ -21,6 +21,6 @@ form.addEventListener('submit', function(e) {
     } else {
         acerto.style.display = 'none';
         erro.textContent = 'O valor é inválido!';
-        erro.style.display = 'block';
+        erro.style.display = '';
     }
 });
