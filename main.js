@@ -11,7 +11,7 @@ function validaValor(campoA, campoB) {
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    let isValid = validaValor(campoA.valueAsNumber, campoB.valueAsNumber);
+    let isValid = validaValor(campoA.value, campoB.value);
     if (isValid) {
         acerto.textContent = 'Valores válidos!';
         acerto.style.display = 'block';
